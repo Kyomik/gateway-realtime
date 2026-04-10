@@ -18,21 +18,21 @@ jobs:
           node-version: 18
 
       - name: Debug Secret
-  	run: |
-    	  echo "USER: ${{ secrets.FTP_PASS }}"
+        run: |
+          echo "USER: ${{ secrets.FTP_USER }}"
 
       - name: Install
         run: npm install
 
       - name: Build
         run: npm run build
-	
+
       - name: Upload to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.klinikcomputer.id
           port: 21
-          protocol: ftps
+          protocol: ftp
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: public_html/gatewayrealtime.klinikcomputer/
