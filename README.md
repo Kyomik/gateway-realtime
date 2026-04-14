@@ -92,8 +92,8 @@ Internal / External Services
 
 ## ⚙️ Environment Variables
 
-See full configuration example here:  
-[View Docs](./.env.example)
+- [Example configuration](./.env.example) – Minimal example file.
+- [Detailed field descriptions](./docs/env-detail.md) – Explanation of every variable.
 
 ## Project setup
 
@@ -131,6 +131,7 @@ $ npm run test:cov
 
 - [Getting Started](./docs/getting-started.md) – Koneksi WebSocket, autentikasi, kirim event.
 - [Multi-Tenant Setup](./docs/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
+- [Event WS Management](./docs/event-management.md) - Cara menambah event websocket
 - [Client Examples](./docs/client-examples.md) – Contoh kode untuk browser, device, desktop.
 
 ## Maintainer
