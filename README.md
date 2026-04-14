@@ -129,10 +129,10 @@ $ npm run test:cov
 
 ## 📖 User Guide
 
-- [Getting Started](./docs/getting-started.md) – Koneksi WebSocket, autentikasi, kirim event.
-- [Multi-Tenant Setup](./docs/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
-- [Event WS Management](./docs/event-management.md) - Cara menambah event websocket
-- [Client Examples](./docs/client-examples.md) – Contoh kode untuk browser, device, desktop.
+- [Getting Started](./guides/getting-started.md) – Koneksi WebSocket, autentikasi, kirim event.
+- [Multi-Tenant Setup](./guides/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
+- [Event WS Management](./guides/event-management.md) - Cara menambah event websocket
+- [Client Examples](./guides/client-examples.md) – Contoh kode untuk browser, device, desktop.
 
 ## Maintainer
 Ilham – [@kyoomik](https://instagram.com/kyoomik)

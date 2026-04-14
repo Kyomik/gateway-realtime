@@ -13,7 +13,7 @@ export class NotificationController {
   ) {}
 
   @Post()
-  @RateLimit('preConnect')
+  @RateLimit('postConnect')
   @UseGuards(ApiAuthGuard)
   async send(@Body() dto: BaseNotificationDto, @Request() req) {
     const clientId = req.client.client_id;
