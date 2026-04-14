@@ -1,26 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-
-<p align="center">
-A scalable realtime gateway for multi-tenant communication, event routing, and service orchestration.
+Realtime Multi-Tenant Gateway – satu pintu komunikasi WebSocket yang menghubungkan berbagai tipe pengguna (browser, device, desktop) dalam satu tenant, lengkap dengan routing dinamis, retry mechanism, dan kontrol event.
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
@@ -72,15 +51,15 @@ Detailed documentation per module:
 -> [View Docs](./docs/communication.md)
 
 ### 🔁 Reliability
-- Event Retry Mechanism With Backoff Strategy
+- Event Retry Mechanism with Backoff Strategy
 - QoS Support (0, 1, 2)
 - Acknowledgement System (ACK/NACK)
 - Timeout Handling
 -> [View Docs](./docs/reliability.md)
 
 ### 📢 Notification
-- Notification Template Tenant
-- Notification Multi Channel  (Currently supports SMTP only)
+- Notification Template per Tenant
+- Multi-Channel Notifications  (Currently supports SMTP only)
 -> [View Docs](./docs/notification.md)
 
 
@@ -88,17 +67,27 @@ Detailed documentation per module:
 
 ```text
 End User
-   ↓
+   │
+   ▼
 API Backend (Authentication & Token)
-   ↓
+   │
+   ▼
 WebSocket Gateway (This System)
-   ↓
+   │
+   ▼
 Routing Engine (Tenant + Product + User Type)
-   ↓
+   │
+   ▼
 Internal / External Services
+```
 
----
+## 🔁 Bagaimana cara kerjanya?
 
+1. **Koneksi** – Client (browser/device) connect ke WebSocket Gateway.
+2. **Auth** – Gateway verifikasi token (JWT untuk web, HMAC untuk device, Firebase untuk desktop app).
+3. **Routing** – Dari metadata token, gateway tahu tenantId, product, userType. Event masuk akan dicocokkan ke whitelist/blacklist.
+4. **Delivery** – Event dikirim ke service tujuan (via internal API atau publish ke message broker).
+5. **Reliability** – Jika gagal, retry dengan exponential backoff hingga timeout. QoS 1/2 membutuhkan ACK.
 
 ## 📌 Use Case
 
@@ -107,7 +96,6 @@ Internal / External Services
 - IoT / device communication gateway
 - Event-driven backend orchestration
 - Multi-platform communication (browser, device, desktop)
-
 
 ## ⚙️ Environment Variables
 
@@ -146,16 +134,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Stay in touch
-
-Info Developer Framework :
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-Info Developer Project :
-- Author - Ilham
-- Instagram - https://www.instagram.com/kyoomik/
+## Maintainer
+Ilham – [@kyoomik](https://instagram.com/kyoomik)
 
 ## 📄 License
 
