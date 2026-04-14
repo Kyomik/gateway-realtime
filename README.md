@@ -74,13 +74,13 @@ Routing Engine (Tenant + Product + User Type)
 Internal / External Services
 ```
 
-## 🔁 Bagaimana cara kerjanya?
+## 🔁 How it works?
 
-1. **Koneksi** – Client (browser/device) connect ke WebSocket Gateway.
-2. **Auth** – Gateway verifikasi token (JWT untuk web, HMAC untuk device, Firebase untuk desktop app).
-3. **Routing** – Dari metadata token, gateway tahu tenantId, product, userType. Event masuk akan dicocokkan ke whitelist/blacklist.
-4. **Delivery** – Event dikirim ke service tujuan (via internal API atau publish ke message broker).
-5. **Reliability** – Jika gagal, retry dengan exponential backoff hingga timeout. QoS 1/2 membutuhkan ACK.
+1. **Connection** – Client (browser/device) connects to the WebSocket Gateway.
+2. **Auth** – Gateway verifies the token (JWT for web, HMAC for device, Firebase token for desktop app).
+3. **Routing** – From token metadata, the gateway knows tenantId, product, and userType. Incoming events are matched against whitelist/blacklist rules.
+4. **Delivery** – Events are sent to the target service (via internal API or published to a message broker).
+5. **Reliability** – On failure, retry with exponential backoff until timeout. QoS 1/2 requires ACK.
 
 ## 📌 Use Case
 
