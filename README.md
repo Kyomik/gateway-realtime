@@ -1,6 +1,7 @@
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+</p>
 
 # 🚀 Realtime Multi-Tenant Gateway
 
@@ -16,7 +17,7 @@ This system acts as a **realtime multi-tenant gateway** that connects different 
 It provides a unified communication layer using WebSocket, enabling:
 - realtime event delivery
 - dynamic routing based on tenant, product, and user type
-- seamless integration with backend services via API calls
+- integration with backend services via synchronous API calls
 
 The gateway abstracts complexity by handling authentication, routing, reliability, and communication in a single layer.
 
@@ -125,6 +126,12 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## 📖 User Guide
+
+- [Getting Started](./docs/getting-started.md) – Koneksi WebSocket, autentikasi, kirim event.
+- [Multi-Tenant Setup](./docs/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
+- [Client Examples](./docs/client-examples.md) – Contoh kode untuk browser, device, desktop.
 
 ## Maintainer
 Ilham – [@kyoomik](https://instagram.com/kyoomik)
