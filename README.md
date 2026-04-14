@@ -1,6 +1,3 @@
-<p align="center">
-Realtime Multi-Tenant Gateway – satu pintu komunikasi WebSocket yang menghubungkan berbagai tipe pengguna (browser, device, desktop) dalam satu tenant, lengkap dengan routing dinamis, retry mechanism, dan kontrol event.
-</p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
@@ -41,27 +38,22 @@ Detailed documentation per module:
   - JWT (browser)
   - HMAC (device)
   - Firebase Token (desktop)
--> [View Docs](./docs/security.md)
 
 ### 🌐 Communication Layer 
 - Pure WebSocket Gateway
 - API Call (Synchronous Service-to-Service)
 - Multi-tenant Routing (Tenant + Product + End-User Type)
 - Whitelist & Blacklist Event Control
--> [View Docs](./docs/communication.md)
 
 ### 🔁 Reliability
 - Event Retry Mechanism with Backoff Strategy
 - QoS Support (0, 1, 2)
 - Acknowledgement System (ACK/NACK)
 - Timeout Handling
--> [View Docs](./docs/reliability.md)
 
 ### 📢 Notification
 - Notification Template per Tenant
 - Multi-Channel Notifications  (Currently supports SMTP only)
--> [View Docs](./docs/notification.md)
-
 
 ## 🏗 Architecture
 
@@ -100,7 +92,7 @@ Internal / External Services
 ## ⚙️ Environment Variables
 
 See full configuration example here:  
--> [View Docs](./.env.example)
+[View Docs](./.env.example)
 
 ## Project setup
 
