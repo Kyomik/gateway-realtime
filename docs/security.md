@@ -45,13 +45,16 @@ Pattern yang digunakan adalah **Factory** dan **Strategy**, sehingga pengguna bi
 5. Jika melebihi batas, request diblokir dan mengembalikan response 429 Too Many Requests.
 Untuk WebSocket, koneksi ditolak atau dikirim pesan error rate-limit.
 
-## Factory yang tersedia
+## Factory yang Tersedia
 
-| Factory | Fungsi | Pemilihan Provider |
-|---------|--------|--------------------|
-| `RatelimitStorageFactory` | Menyediakan storage untuk menyimpan data rate limit (counter, waktu blokir). | API = decorator @RateLimit, Websocket = parameter kedua fungsi validate |
-| `KeyExtractorFactory` | Menyediakan strategy untuk mengekstrak key unik dari request (berdasarkan IP, token, dll). | file .env |
+| Factory | Fungsi |
+|---------|--------|
+| `RatelimitStorageFactory` | Menyediakan storage untuk menyimpan data rate limit (counter, waktu blokir). |
+| `KeyExtractorFactory` | Menyediakan strategy untuk mengekstrak key unik dari request (berdasarkan IP, token, dll). |
 
+> **Catatan Storage:** Storage yang digunakan (`memory` atau `redis`) ditentukan melalui environment variable `RATE_LIMIT_STORAGE`.
+
+> **Catatan Key Extractor:** Untuk REST API, key extractor yang dipilih ditentukan oleh **decorator** `@RateLimit()`. Untuk WebSocket, key extractor ditentukan melalui **parameter kedua** pada fungsi `validate()`.
 
 ### Dua Phase Rate Limiting
 
