@@ -44,6 +44,15 @@ It provides a unified communication layer using WebSocket, enabling:
 
 The gateway abstracts complexity by handling authentication, routing, reliability, and communication in a single layer.
 
+## 📚 Documentation
+
+Detailed documentation per module:
+
+- 🔐 Security → [View Docs](./docs/security.md)
+- 🌐 Communication → [View Docs](./docs/communication.md)
+- 🔁 Reliability → [View Docs](./docs/reliability.md)
+- 📢 Notification → [View Docs](./docs/notification.md)
+
 
 ## 🚀 Features
 
@@ -71,7 +80,7 @@ The gateway abstracts complexity by handling authentication, routing, reliabilit
 
 ### 📢 Notification
 - Notification Template Tenant
-- Notification Multi Channel  (Only SMTP now)
+- Notification Multi Channel  (Currently supports SMTP only)
 -> [View Docs](./docs/notification.md)
 
 
@@ -87,6 +96,8 @@ WebSocket Gateway (This System)
 Routing Engine (Tenant + Product + User Type)
    ↓
 Internal / External Services
+
+---
 
 
 ## 📌 Use Case
