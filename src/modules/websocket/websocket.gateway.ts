@@ -29,7 +29,6 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
 
   async handleConnection(client: WsClient, request: IncomingMessage): Promise<void> {
     try {
-      console.log('login lu')
       await this.wsRateLimitGuard.validate(request, 'preConnect');
 
       client.isAlive = false;
@@ -84,7 +83,6 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
         || error.code === 'UNAUTHENTICATED' 
         || error.code === 'FORBIDDEN'
         || error.code === 'INVALID_SIGNATURE') {
-          console.log('woowow')
         closeCode = 1008;
       }
       client.close(closeCode, closeReason);
@@ -103,7 +101,6 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
   }
 
   private handleError(err: any, client: WsClient): any {
-    console.log(err)
     const error = normalizeWsError(err);
     if (client.readyState === 1) 
       client.send(JSON.stringify({ event: 'error', ...error }));

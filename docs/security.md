@@ -97,6 +97,20 @@ Gateway mendukung tiga metode autentikasi, masing-masing ditujukan untuk tipe kl
 
 > **Catatan Centralized Authentication:** Untuk tipe **browser**, gateway bertindak sebagai **token issuer** sekaligus verifier (JWT). Untuk tipe device dan desktop, gateway hanya **memverifikasi** token yang diterbitkan oleh sistem lain (HMAC signature atau Firebase). Tidak ada mekanisme shared JWT secret antar layanan.
 
+### ProviderFactory untuk Firebase
+
+Gateway menggunakan `ProviderFactory` untuk mengelola koneksi Firebase per tenant. Setiap tenant dapat memiliki konfigurasi Firebase sendiri yang disimpan di tabel `firebase_config`:
+
+| Kolom | Deskripsi |
+|-------|-------------|
+| `clientId` | ID tenant (relasi ke `client`). |
+| `projectId` | Firebase project ID. |
+| `clientEmail` | Email service account Firebase. |
+| `privateKey` | Private key service account (dalam format string dengan `\n`). |
+
+`AuthProviderFactory` akan membaca konfigurasi tersebut dan membuat instance `FirebaseProvider` yang di‑cache selama 1 jam untuk efisiensi. Jika tidak ditemukan konfigurasi untuk tenant, autentikasi Firebase akan gagal.
+
+
 ### Contoh Format Token HMAC
 
 Device harus mengirim payload JSON (misal sebagai query parameter `?token=...`) dengan struktur:

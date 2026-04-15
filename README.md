@@ -71,7 +71,7 @@ WebSocket Gateway (This System)
 Routing Engine (Tenant + Product + User Type)
    │
    ▼
-Internal / External Services
+Internal / External Services (Optional)
 ```
 
 ## 🔁 How it works?
@@ -130,9 +130,15 @@ $ npm run test:cov
 ## 📖 User Guide
 
 - [Getting Started](./guides/getting-started.md) – Koneksi WebSocket, autentikasi, kirim event.
-- [Multi-Tenant Setup](./guides/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
-- [Event WS Management](./guides/event-management.md) - Cara menambah event websocket
 - [Client Examples](./guides/client-examples.md) – Contoh kode untuk browser, device, desktop.
+- [Available Events](./guides/available-events.md) – Daftar event yang tersedia dan formatnya.
+- [Send Notifications](./guides/notification-send.md) - Cara menggunakan fitur notification gateway.
+
+## 👨‍💼 Administrator Guide
+
+- [Multi-Tenant Setup](./guides/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
+- [Notification Template Setup](./guides/template-notification-setup.md) – Cara setup template notifikasi per tenant.
+- [Whitelist & Blacklist Setup](./guides/event-security-setup.md) – Cara mengatur kontrol event (whitelist/blacklist) per tenant, product, dan user type.
 
 ## Maintainer
 Ilham – [@kyoomik](https://instagram.com/kyoomik)

@@ -42,7 +42,7 @@ export class HmacAuthStrategy implements IAuthStrategy {
     }
 
     const device = await this.deviceService.getAuth(clientId, deviceId);
-
+    
     if (!device) {
       throw new AppWsException(
         'UNAUTHENTICATED',
