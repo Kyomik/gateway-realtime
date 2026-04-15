@@ -142,6 +142,7 @@ $ npm run test:cov
 
 ## Maintainer
 Ilham – [@kyoomik](https://instagram.com/kyoomik)
+[@Techno Kreatif Solusindo](https://www.instagram.com/technokreatifsolusindo)
 
 ## 📄 License
 
