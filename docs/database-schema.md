@@ -1,8 +1,6 @@
-## Database Schema 
+# Database Schema 
 
-<p align="center">
-  <img src="../images/database-schema.png" width="500"/>
-</p>
+![Diagram Arsitektur](./images/database-schema.png)
 
 ## 📌 Keterangan Relasi
 
