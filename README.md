@@ -134,7 +134,7 @@ $ npm run test:cov
 - [Send Notifications](./guides/notification-send.md) - Cara menggunakan fitur notification gateway.
 
 ## 👨‍💼 Administrator Guide
-
+- [Database-Schema](./docs/database-schema.md) - Penjelasan Relasi tiap tabel.
 - [Multi-Tenant Setup](./guides/tenant-setup.md) – Cara menambah, mengedit, atau menghapus tenant.
 - [Notification Template Setup](./guides/template-notification-setup.md) – Cara setup template notifikasi per tenant.
 - [Whitelist & Blacklist Setup](./guides/event-security-setup.md) – Cara mengatur kontrol event (whitelist/blacklist) per tenant, product, dan user type.
