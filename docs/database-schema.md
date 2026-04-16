@@ -1,6 +1,6 @@
 # Database Schema 
 
-![Diagram Arsitektur](./images/database-schema.png)
+![Diagram Arsitektur](../images/database-schema.png)
 
 ## 📌 Keterangan Relasi
 
