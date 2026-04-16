@@ -1,8 +1,8 @@
-# Database Schema 
+# 🗄️ Database Schema 
 
 ![Diagram Arsitektur](../images/database-schema.png)
 
-## 📌 Keterangan Relasi
+## Keterangan Relasi
 
 - **client (1) → (N) secret** : satu client punya banyak secret (`key_service`, `key_device`)
 - **client (1) → (N) host_client** : satu client punya banyak domain/API untuk produk berbeda
@@ -23,7 +23,7 @@
 - **event_transaksi (1) → (N) whitelist/blacklist** : satu event bisa muncul di banyak aturan akses
 - **notification_templates (1) → (N) template_contents** : satu template punya banyak konten (subject/body per channel)
 
-## 🧩 Catatan Penting
+## Catatan Penting
 
 - **Whitelist** berlaku untuk browser (role), **blacklist** untuk device.
 - **enduser** menyimpan tipe pengguna (`browser`, `device`, `desktop`) dan dihubungkan ke `role_transaksi` atau `device_transaksi`.
