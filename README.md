@@ -140,8 +140,8 @@ $ npm run test:cov
 - [Whitelist & Blacklist Setup](./guides/event-security-setup.md) – Cara mengatur kontrol event (whitelist/blacklist) per tenant, product, dan user type.
 
 ## Maintainer
-Ilham – [@kyoomik](https://instagram.com/kyoomik)
-[@Techno Kreatif Solusindo](https://www.instagram.com/technokreatifsolusindo)
+- Ilham – [@kyoomik](https://instagram.com/kyoomik)
+= [@Techno Kreatif Solusindo](https://www.instagram.com/technokreatifsolusindo)
 
 ## 📄 License
 

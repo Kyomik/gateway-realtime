@@ -134,6 +134,5 @@ Alternatif: ubah status menjadi `offline`.
 
 ## Referensi
 
-- [Database](./database-detail.md) – Struktur Database lengkap
 - [Notification Template Setup](./template-notification-setup.md) – Untuk mengatur template notifikasi per tenant.
 - [Whitelist & Blacklist Setup](./event-security-setup.md) – Untuk mengatur kontrol event.
