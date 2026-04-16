@@ -130,7 +130,6 @@ $ npm run test:cov
 ## 📖 User Guide
 
 - [Getting Started](./guides/getting-started.md) – Koneksi WebSocket, autentikasi, kirim event.
-- [Client Examples](./guides/client-examples.md) – Contoh kode untuk browser, device, desktop.
 - [Available Events](./guides/available-events.md) – Daftar event yang tersedia dan formatnya.
 - [Send Notifications](./guides/notification-send.md) - Cara menggunakan fitur notification gateway.
 

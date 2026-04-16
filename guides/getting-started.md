@@ -166,7 +166,7 @@ Anda wajib mengirim balasan event:ack dalam waktu yang ditentukan:
 
 > Jika tidak mengirim ack, gateway akan mengirim ulang event.
 
-### 5. Menerima Event
+## 5. Menerima Event
 
 Gateway akan mengirim event ke client yang berhak menerima. Format pesan:
 
@@ -190,7 +190,7 @@ Contoh browser menerima event result-scan dari device:
 }
 ```
 
-### 6 Menangani Error
+## 6 Menangani Error
 
 Jika terjadi error (misal event tidak diizinkan, token expired), gateway akan mengirim:
 

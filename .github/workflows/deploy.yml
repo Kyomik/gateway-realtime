@@ -1,4 +1,4 @@
-name: Deploy via SSH
+name: Deploy to cPanel
 
 on:
   push:
@@ -10,12 +10,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Debug Secret
+        run: |
+          echo "USER: ${{ secrets.FTP_USER }}"
 
       - name: Install
         run: npm install
@@ -23,13 +27,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Upload via SCP
-        run: |
-          scp -P ${{ secrets.SSH_PORT }} -r dist/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/
+      - name: Upload to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.klinikcomputer.id
+          port: 21
+          protocol: ftp
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: public_html/gatewayrealtime.app/
