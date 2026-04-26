@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  gateway:
+    image: ghcr.io/kyomik/gatewayrealtime:latest   # ganti kyomik dengan username GitHub Anda
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    # Jika butuh environment variable, tambahkan:
+    # environment:
+    #   - NODE_ENV=production
+    #   - DATABASE_URL=postgresql://...
