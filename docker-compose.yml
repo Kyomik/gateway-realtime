@@ -1,11 +1,22 @@
-version: '3.8'
 services:
   gateway:
     image: ghcr.io/kyomik/gatewayrealtime:latest
     ports:
       - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
     restart: unless-stopped
-    # Jika butuh environment variable, tambahkan:
-    # environment:
-    #   - NODE_ENV=production
-    #   - DATABASE_URL=postgresql://...
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ammarjie500      # sesuai DB_PASS di .env
+      MYSQL_DATABASE: auth_service          # sesuai DB_NAME di .env
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
