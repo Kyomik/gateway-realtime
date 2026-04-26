@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   gateway:
-    image: ghcr.io/Kyomik/gatewayrealtime:latest
+    image: ghcr.io/kyomik/gatewayrealtime:latest
     ports:
       - "3000:3000"
     restart: unless-stopped
