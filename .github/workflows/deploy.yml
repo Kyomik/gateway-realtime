@@ -58,6 +58,10 @@ jobs:
           username: ilham
           key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
           script: |
+            if [ ! -d ~/gatewayrealtime/.git ]; then
+              git clone https://github.com/Kyomik/gatewayrealtime.git ~/gatewayrealtime
+            fi
+            
             cd ~/gatewayrealtime
             git pull origin main
             docker compose pull
