@@ -51,11 +51,7 @@ jobs:
 
       - name: Create .env file on server
         run: |
-          tailscale ssh ilham@${{ secrets.SERVER_TAILSCALE_IP }} "
-            cat > ~/gatewayrealtime/.env << 'EOF'
-            ${{ secrets.ENV_CONTENT }}
-            EOF
-          "
+          echo "${{ secrets.ENV_CONTENT }}" | tailscale ssh ilham@${{ secrets.SERVER_TAILSCALE_IP }} "cat > ~/gatewayrealtime/.env"
           
       - name: Copy docker-compose.yml to server
         run: |
