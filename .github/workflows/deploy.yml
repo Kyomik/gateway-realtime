@@ -15,20 +15,16 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-
       - name: Convert repository name to lowercase
         run: echo "IMAGE_NAME_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
-
       - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -39,8 +35,10 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LOWER }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
   deploy:
+    concurrency: 
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: true
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -51,19 +49,28 @@ jobs:
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:ci
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_TAILSCALE_IP }}
-          username: ilham
-          key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-          script: |
-            if [ ! -d ~/gatewayrealtime/.git ]; then
-              git clone https://github.com/Kyomik/gatewayrealtime.git ~/gatewayrealtime
+      - name: Create .env file on server
+        run: |
+          tailscale ssh ilham@${{ secrets.SERVER_TAILSCALE_IP }} "
+            cat > ~/gatewayrealtime/.env << 'EOF'
+            ${{ secrets.ENV_CONTENT }}
+            EOF
+          "
+          
+      - name: Copy docker-compose.yml to server
+        run: |
+          tailscale ssh ilham@${{ secrets.SERVER_TAILSCALE_IP }} "cat > ~/gatewayrealtime/docker-compose.yml" < docker-compose.yml
+     
+      - name: Deploy via Tailscale SSH
+        run: |
+          tailscale ssh ilham@${{ secrets.SERVER_TAILSCALE_IP }} "
+            if [ ! -d ~/gatewayrealtime ]; then
+              mkdir ~/gatewayrealtime
             fi
-            
             cd ~/gatewayrealtime
-            git pull origin main
             docker compose pull
             docker compose up -d
+            sleep 5
+            docker ps | grep gatewayrealtime || exit 1
             docker image prune -f
+          "
